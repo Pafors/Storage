@@ -19,6 +19,21 @@ namespace Storage.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> InventorySum()
+        {
+            IEnumerable<ProductViewModel> viewModel;
+            viewModel = await _context.Product.Select(p => new ProductViewModel
+            {
+                Name = p.Name,
+                Price = p.Price,
+                Count = p.Count,
+                InventoryValue = p.Price * p.Count
+            }).ToListAsync();
+
+            return View();
+        }
+
+
         // GET: Products
         public async Task<IActionResult> Index()
         {
