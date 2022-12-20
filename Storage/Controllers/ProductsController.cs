@@ -30,7 +30,7 @@ namespace Storage.Controllers
                 InventoryValue = p.Price * p.Count
             }).ToListAsync();
 
-            return View();
+            return View(viewModel);
         }
 
 
