@@ -34,6 +34,7 @@ namespace Storage.Controllers
             return View(viewModel);
         }
 
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ProductFilter(string category)
         {
             // If filter input field is empty, show all, otherwise filter
