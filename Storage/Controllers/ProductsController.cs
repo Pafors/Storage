@@ -19,6 +19,7 @@ namespace Storage.Controllers
             _context = context;
         }
 
+        // Calculates the total value for each of the Products
         public async Task<IActionResult> InventorySum()
         {
             IEnumerable<ProductViewModel> viewModel;
@@ -31,6 +32,17 @@ namespace Storage.Controllers
             }).ToListAsync();
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> ProductFilter(string category)
+        {
+            // If filter input field is empty, show all, otherwise filter
+            var filterResult = string.IsNullOrWhiteSpace(category) ?
+                _context.Product :
+                _context.Product.Where(p => p.Category.Contains(category));
+
+            // Return result to normal index view
+            return View(nameof(Index), await filterResult.ToListAsync());
         }
 
 

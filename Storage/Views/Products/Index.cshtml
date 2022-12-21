@@ -4,6 +4,26 @@
     ViewData["Title"] = "Index";
 }
 
+<form asp-controller="Products" asp-action="ProductFilter" class="row gx-3 gy-2 align-items-end">
+
+            <!-- Filter input -->
+            <div class="col-sm">
+              <div class="mb-3">
+                <input type="text" class="form-control" name="category" placeholder="Write category">
+              </div>
+            </div>
+
+            <!-- Filter button -->
+            <div class="col-auto">
+              <div class="mb-3">
+                <button type="submit" class="btn btn-secondary">Filter</button>
+              </div>
+            </div>
+
+          </form>
+
+
+
 <h1>Index</h1>
 
 <p>
